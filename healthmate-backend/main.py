@@ -19,7 +19,9 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
 app = FastAPI()
-
+@app.get("/")
+async def root():
+    return {"message": "Welcome to HealthMate backend!"}
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allow any frontend for now. Change to specific domain later. allow_origins=["http://localhost:3000", "https://yourdomain.com"]
