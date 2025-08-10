@@ -6,6 +6,8 @@ import { TypingIndicator } from "./TypingIndicator";
 import { EmptyState } from "./EmptyState";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 interface Message {
   id: string;
   content: string;
@@ -38,7 +40,7 @@ export function ChatInterface() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/diagnose', {
+      const response = await fetch(`${backendUrl}/diagnose`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
